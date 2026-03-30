@@ -506,19 +506,6 @@ select {
   min-width: 0;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  background: var(--white);
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
 .badge-dot {
   width: 10px;
   height: 10px;
@@ -2350,11 +2337,6 @@ select {
     margin-left: auto;
     margin-right: auto;
   }
-
-  .hero-badge {
-    justify-content: center;
-  }
-
   .hero-search {
     width: min(100%, 620px);
     padding: 0.75rem;
@@ -2588,13 +2570,6 @@ select {
   .partner-heading,
   .cta-heading {
     font-size: 1.9rem;
-  }
-
-  .hero-badge {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    border-radius: 18px;
   }
 
   .hero-search {

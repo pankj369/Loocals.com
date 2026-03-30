@@ -18,12 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const backToTop = document.getElementById('backToTop');
 
-  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-link');
-  const navTargets = [...allNavLinks]
-    .map(link => link.getAttribute('href'))
-    .filter(href => href && href.startsWith('#') && href !== '#')
-    .map(href => document.querySelector(href))
-    .filter(Boolean);
+  const allNavLinks = [...document.querySelectorAll('.nav-link, .mobile-link')];
+  const trackedSectionIds = [...new Set(
+    allNavLinks
+      .map(link => link.getAttribute('href'))
+      .filter(href => href && href.startsWith('#') && href !== '#')
+      .map(href => href.slice(1))
+  )];
+
+  const getTrackedSections = () => trackedSectionIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean)
+    .sort((firstSection, secondSection) => firstSection.offsetTop - secondSection.offsetTop);
+
+  let navTargets = getTrackedSections();
 
   const getNavbarOffset = () => {
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
@@ -33,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const syncNavbarMetrics = () => {
     if (!navbar) return;
     document.documentElement.style.setProperty('--nav-height', `${navbar.offsetHeight}px`);
+    navTargets = getTrackedSections();
   };
 
   const setActiveNavLink = (targetId) => {
@@ -59,14 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const updateActiveSection = () => {
-    const scrollPosition = window.scrollY + getNavbarOffset() + 30;
-    let currentSection = 'home';
+    const scrollPosition = window.scrollY + getNavbarOffset() + Math.min(window.innerHeight * 0.18, 140);
+    let currentSection = navTargets[0]?.id || 'home';
 
     navTargets.forEach(section => {
       if (section.offsetTop <= scrollPosition) {
         currentSection = section.id;
       }
     });
+
+    const isNearPageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (isNearPageBottom && navTargets.length) {
+      currentSection = navTargets[navTargets.length - 1].id;
+    }
 
     setActiveNavLink(currentSection);
   };
