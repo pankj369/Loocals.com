@@ -1,6 +1,6 @@
 /*
 ========================================
-LOKATO - INTERACTIVE LOGIC & ANIMATIONS
+LOOCALS - INTERACTIVE LOGIC & ANIMATIONS
 ========================================
 - Navbar Scroll & Mobile Menu
 - Scroll Reveal (Intersection Observer)
@@ -139,6 +139,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. SCROLL REVEAL ANIMATIONS
   const revealElements = document.querySelectorAll('[data-reveal]');
+
+  // Touch-friendly press feedback for mobile/tablet
+  const pressableElements = document.querySelectorAll(
+    '.btn, .filter-btn, .download-btn, .slider-btn, .feature-card, .category-card, .store-card, .testimonial-card, .step-card, .float-card, .faq-item, .footer-contact-pill'
+  );
+
+  const addPressedState = (event) => {
+    const pressable = event.currentTarget;
+    pressable.classList.add('is-pressed');
+  };
+
+  const removePressedState = (event) => {
+    const pressable = event.currentTarget;
+    pressable.classList.remove('is-pressed');
+  };
+
+  pressableElements.forEach(element => {
+    element.addEventListener('pointerdown', addPressedState);
+    element.addEventListener('pointerup', removePressedState);
+    element.addEventListener('pointerleave', removePressedState);
+    element.addEventListener('pointercancel', removePressedState);
+  });
   
   const revealOnScroll = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -316,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newsletterForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('newsletterEmail').value;
-      alert(`Thank you for subscribing, ${email}! You'll receive updates from Lokato soon.`);
+      alert(`Thank you for subscribing, ${email}! You'll receive updates from Loocals soon.`);
       newsletterForm.reset();
     });
   }
