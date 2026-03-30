@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lokato – Discover nearby local stores, browse products, and get fast delivery right to your door. Your neighborhood market is now online." />
+  <meta name="keywords" content="Lokato, nearby stores, local shopping, quick delivery, hyperlocal ecommerce, grocery delivery, neighborhood market" />
+  <meta property="og:title" content="Lokato – Shop from Nearby Stores, Delivered Fast" />
+  <meta property="og:description" content="Discover nearby local stores, browse products, and get fast delivery with Lokato – your hyperlocal shopping platform." />
+  <meta property="og:type" content="website" />
+  <title>Lokato – Shop from Nearby Stores, Delivered Fast</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Remix Icons (lightweight icon library, CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" aria-label="Lokato Home">
+        <span class="logo-icon"><i class="ri-map-pin-2-fill"></i></span>
+        <span class="logo-text">Lok<span class="logo-accent">ato</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#stores" class="nav-link">Stores</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#app" class="btn btn-primary btn-sm" id="navCta">
+          <i class="ri-smartphone-line"></i> Download App
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#home" class="mobile-link">Home</a></li>
+        <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+        <li><a href="#features" class="mobile-link">Features</a></li>
+        <li><a href="#stores" class="mobile-link">Stores</a></li>
+        <li><a href="#testimonials" class="mobile-link">Testimonials</a></li>
+        <li><a href="#faq" class="mobile-link">FAQ</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+        <li><a href="#app" class="btn btn-primary" style="text-align:center; display:block; margin-top:0.5rem;">Download App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="home" aria-label="Hero Section">
+      <div class="hero-bg-shapes">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- Hero Text -->
+        <div class="hero-content" data-reveal>
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Now available in your city</span>
+          </div>
+          <h1 class="hero-heading">
+            Shop from <span class="text-gradient">Nearby Stores,</span><br/>
+            Delivered Fast.
+          </h1>
+          <p class="hero-subtext">
+            Lokato connects you with the best local shops in your neighborhood. Browse thousands of products, place an order in seconds, and get them delivered right to your door.
+          </p>
+
+          <!-- Location Input -->
+          <div class="hero-search" role="search">
+            <div class="search-icon"><i class="ri-map-pin-line"></i></div>
+            <input type="text" id="locationInput" placeholder="Enter your location to find nearby stores..." class="search-input" aria-label="Enter your location" />
+            <button class="search-btn" id="heroSearchBtn" aria-label="Find Stores">
+              <i class="ri-search-line"></i> Find Stores
+            </button>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="hero-ctas">
+            <a href="#stores" class="btn btn-primary btn-lg">
+              <i class="ri-store-2-line"></i> Explore Stores
+            </a>
+            <a href="#app" class="btn btn-outline btn-lg">
+              <i class="ri-download-line"></i> Download App
+            </a>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="hero-trust">
+            <div class="trust-item">
+              <i class="ri-shield-check-fill"></i>
+              <span>Verified Stores</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <i class="ri-time-fill"></i>
+              <span>Fast Delivery</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <i class="ri-star-fill"></i>
+              <span>4.8★ Rated</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="hero-visual" data-reveal data-reveal-delay="200">
+          <div class="hero-phone-mockup">
+            <!-- Phone frame -->
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <!-- App UI Mockup inside phone -->
+                <div class="app-ui">
+                  <div class="app-header">
+                    <div class="app-location"><i class="ri-map-pin-fill"></i> Koramangala, BLR</div>
+                    <div class="app-avatar"></div>
+                  </div>
+                  <div class="app-search-bar"><i class="ri-search-line"></i> Search products, stores...</div>
+                  <div class="app-banner">
+                    <div class="app-banner-text">
+                      <div class="app-banner-tag">⚡ Quick Delivery</div>
+                      <div class="app-banner-title">Fresh Groceries</div>
+                      <div class="app-banner-sub">In 20-30 mins</div>
+                    </div>
+                    <div class="app-banner-emoji">🛒</div>
+                  </div>
+                  <div class="app-cats-label">Categories</div>
+                  <div class="app-cats">
+                    <div class="app-cat"><div class="cat-icon"><img src="assets/new_cat_groceries_1774869226450.png" alt="Groceries"></div><div class="cat-name">Veggies</div></div>
+                    <div class="app-cat"><div class="cat-icon"><img src="assets/cat_dairy_1774868349024.png" alt="Dairy"></div><div class="cat-name">Dairy</div></div>
+                    <div class="app-cat"><div class="cat-icon"><img src="assets/cat_beverages_1774868384528.png" alt="Fruits"></div><div class="cat-name">Fruits</div></div>
+                    <div class="app-cat"><div class="cat-icon"><img src="assets/cat_personal_1774868453599.png" alt="Personal care"></div><div class="cat-name">Care</div></div>
+                  </div>
+                  <div class="app-stores-label">Nearby Stores</div>
+                  <div class="app-store-card">
+                    <img src="assets/new_store_interior_1774869244376.png" alt="FreshMart Grocery" class="app-store-thumb">
+                    <div class="app-store-info">
+                      <div class="app-store-name">FreshMart Grocery</div>
+                      <div class="app-store-meta"><span>⭐ 4.8</span> · <span>1.2 km</span> · <span>25 min</span></div>
+                    </div>
+                  </div>
+                  <div class="app-store-card">
+                    <img src="assets/store_view_2_1774868296658.png" alt="Daily Needs Store" class="app-store-thumb">
+                    <div class="app-store-info">
+                      <div class="app-store-name">Daily Needs Store</div>
+                      <div class="app-store-meta"><span>⭐ 4.6</span> · <span>0.8 km</span> · <span>18 min</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="phone-notch"></div>
+            </div>
+
+            <!-- Floating cards -->
+            <div class="float-card float-card-1" aria-hidden="true">
+              <img src="assets/store_view_1_1774868279725.png" alt="" class="float-card-thumb">
+              <div>
+                <div class="float-card-title">500+ Stores</div>
+                <div class="float-card-sub">Near you</div>
+              </div>
+            </div>
+            <div class="float-card float-card-2" aria-hidden="true">
+              <img src="assets/feature_delivery_1774868402377.png" alt="" class="float-card-thumb">
+              <div>
+                <div class="float-card-title">⚡ 20-30 min</div>
+                <div class="float-card-sub">Fast Delivery</div>
+              </div>
+            </div>
+            <div class="float-card float-card-3" aria-hidden="true">
+              <img src="assets/feature_verification_1774868472584.png" alt="" class="float-card-thumb">
+              <div>
+                <div class="float-card-title">4.8 Rating</div>
+                <div class="float-card-sub">25K+ reviews</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator" aria-label="Scroll down">
+        <div class="scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- ========== STATS STRIP ========== -->
+    <section class="stats-strip" id="stats" aria-label="Statistics">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item" data-reveal>
+            <div class="stat-icon"><img src="assets/store_view_1_1774868279725.png" alt="Stores"></div>
+            <div class="stat-number" data-count="500">0</div>
+            <div class="stat-plus">+</div>
+            <div class="stat-label">Nearby Stores</div>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item" data-reveal data-reveal-delay="100">
+            <div class="stat-icon"><img src="assets/new_cat_groceries_1774869226450.png" alt="Products"></div>
+            <div class="stat-number" data-count="10000">0</div>
+            <div class="stat-plus">+</div>
+            <div class="stat-label">Products Listed</div>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item" data-reveal data-reveal-delay="200">
+            <div class="stat-icon"><img src="assets/feature_verification_1774868472584.png" alt="Happy customers"></div>
+            <div class="stat-number" data-count="25000">0</div>
+            <div class="stat-plus">+</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item" data-reveal data-reveal-delay="300">
+            <div class="stat-icon"><img src="assets/feature_delivery_1774868402377.png" alt="Fast delivery"></div>
+            <div class="stat-number" data-count="30">0</div>
+            <div class="stat-plus"></div>
+            <div class="stat-label">Min Avg. Delivery</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="section how-it-works" id="how-it-works" aria-label="How Lokato Works">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-badge">Simple & Fast</div>
+          <h2 class="section-title">How <span class="text-gradient">Lokato</span> Works</h2>
+          <p class="section-subtitle">Get your favorite products from local stores delivered to your door in 4 easy steps.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card" data-reveal data-reveal-delay="0">
+            <div class="step-number">01</div>
+            <div class="step-media"><img src="assets/feature_search_1774868488657.png" alt="Find nearby stores"></div>
+            <h3 class="step-title">Find Nearby Stores</h3>
+            <p class="step-desc">Enter your location and instantly discover verified local stores around you within minutes.</p>
+            <div class="step-arrow" aria-hidden="true"><i class="ri-arrow-right-line"></i></div>
+          </div>
+          <div class="step-card" data-reveal data-reveal-delay="100">
+            <div class="step-number">02</div>
+            <div class="step-media"><img src="assets/new_cat_groceries_1774869226450.png" alt="Browse products"></div>
+            <h3 class="step-title">Browse Products</h3>
+            <p class="step-desc">Explore thousands of products from groceries to daily essentials, all available in real-time.</p>
+            <div class="step-arrow" aria-hidden="true"><i class="ri-arrow-right-line"></i></div>
+          </div>
+          <div class="step-card" data-reveal data-reveal-delay="200">
+            <div class="step-number">03</div>
+            <div class="step-media"><img src="assets/feature_checkout_1774868503023.png" alt="Place your order"></div>
+            <h3 class="step-title">Place Your Order</h3>
+            <p class="step-desc">Add items to cart, choose payment method, and confirm your order in seconds with ease.</p>
+            <div class="step-arrow" aria-hidden="true"><i class="ri-arrow-right-line"></i></div>
+          </div>
+          <div class="step-card" data-reveal data-reveal-delay="300">
+            <div class="step-number">04</div>
+            <div class="step-media"><img src="assets/feature_delivery_1774868402377.png" alt="Fast delivery"></div>
+            <h3 class="step-title">Get Fast Delivery</h3>
+            <p class="step-desc">Sit back and relax! Your order gets delivered from the nearby store to your doorstep fast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE LOKATO ========== -->
+    <section class="section features-section" id="features" aria-label="Why Choose Lokato">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-badge">Our Advantages</div>
+          <h2 class="section-title">Why Choose <span class="text-gradient">Lokato?</span></h2>
+          <p class="section-subtitle">We make local shopping fast, easy, and trustworthy — every single day.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card" data-reveal>
+            <div class="feature-img-cover"><img src="assets/feature_search_1774868488657.png" alt="Nearby Store Discovery" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Nearby Store Discovery</h3>
+              <p class="feature-desc">Find stores closest to you instantly using smart location-based search technology.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="50">
+            <div class="feature-img-cover"><img src="assets/feature_delivery_1774868402377.png" alt="Fast Local Delivery" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Fast Local Delivery</h3>
+              <p class="feature-desc">Because your products come from nearby, delivery is lightning fast — often under 30 minutes.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="100">
+            <div class="feature-img-cover"><img src="assets/feature_verification_1774868472584.png" alt="Trusted & Verified Shops" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Trusted & Verified Shops</h3>
+              <p class="feature-desc">Every partner store is verified by our team for quality assurance and customer trust.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="150">
+            <div class="feature-img-cover"><img src="assets/feature_search_1774868488657.png" alt="Easy Product Search" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Easy Product Search</h3>
+              <p class="feature-desc">Search by product name, category, or store. Find exactly what you need in seconds.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="200">
+            <div class="feature-img-cover"><img src="assets/feature_checkout_1774868503023.png" alt="Real-Time Availability" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Real-Time Availability</h3>
+              <p class="feature-desc">See live stock status on every product. No more ordering items that are out of stock.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="250">
+            <div class="feature-img-cover"><img src="assets/feature_checkout_1774868503023.png" alt="Smooth Ordering Experience" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Smooth Ordering Experience</h3>
+              <p class="feature-desc">Seamless cart management, instant checkout, and order tracking all in one place.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="300">
+            <div class="feature-img-cover"><img src="assets/feature_checkout_1774868503023.png" alt="Secure Checkout" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Secure Checkout</h3>
+              <p class="feature-desc">Multiple payment options with bank-grade encryption — UPI, cards, COD, and wallets.</p>
+            </div>
+          </div>
+          <div class="feature-card" data-reveal data-reveal-delay="350">
+            <div class="feature-img-cover"><img src="assets/feature_search_1774868488657.png" alt="Mobile-Friendly Shopping" loading="lazy"></div>
+            <div class="feature-card-content">
+              <h3 class="feature-title">Mobile-Friendly Shopping</h3>
+              <p class="feature-desc">Designed mobile-first. Shop on any device with a buttery-smooth app and website experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CATEGORIES ========== -->
+    <section class="section categories-section" id="categories" aria-label="Featured Categories">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-badge">Shop by Category</div>
+          <h2 class="section-title">Featured <span class="text-gradient">Categories</span></h2>
+          <p class="section-subtitle">From fresh produce to daily essentials — everything from your local stores.</p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card" data-reveal>
+            <div class="cat-img-wrap">
+              <img src="assets/new_cat_groceries_1774869226450.png" alt="Groceries">
+            </div>
+            <span class="cat-name">Groceries</span>
+            <span class="cat-count">240+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="50">
+            <div class="cat-img-wrap">
+              <img src="assets/new_cat_groceries_1774869226450.png" alt="Fruits & Veggies">
+            </div>
+            <span class="cat-name">Fruits & Veggies</span>
+            <span class="cat-count">180+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="100">
+            <div class="cat-img-wrap">
+              <img src="assets/cat_dairy_1774868349024.png" alt="Dairy">
+            </div>
+            <span class="cat-name">Dairy</span>
+            <span class="cat-count">90+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="150">
+            <div class="cat-img-wrap">
+              <img src="assets/cat_snacks_1774868366562.png" alt="Snacks">
+            </div>
+            <span class="cat-name">Snacks</span>
+            <span class="cat-count">320+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="200">
+            <div class="cat-img-wrap">
+              <img src="assets/cat_beverages_1774868384528.png" alt="Beverages">
+            </div>
+            <span class="cat-name">Beverages</span>
+            <span class="cat-count">150+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="250">
+            <div class="cat-img-wrap">
+              <img src="assets/cat_household_1774868437532.png" alt="Household">
+            </div>
+            <span class="cat-name">Household</span>
+            <span class="cat-count">200+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="300">
+            <div class="cat-img-wrap">
+              <img src="assets/cat_personal_1774868453599.png" alt="Personal Care">
+            </div>
+            <span class="cat-name">Personal Care</span>
+            <span class="cat-count">140+ items</span>
+          </div>
+          <div class="category-card" data-reveal data-reveal-delay="350">
+            <div class="cat-img-wrap">
+              <img src="assets/cat_household_1774868437532.png" alt="Daily Essentials">
+            </div>
+            <span class="cat-name">Daily Essentials</span>
+            <span class="cat-count">280+ items</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NEARBY STORES SHOWCASE ========== -->
+    <section class="section stores-section" id="stores" aria-label="Nearby Stores">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-badge">Live Near You</div>
+          <h2 class="section-title">Nearby <span class="text-gradient">Stores</span></h2>
+          <p class="section-subtitle">Real local stores near your neighborhood, ready to deliver.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="store-filters" data-reveal>
+          <button class="filter-btn active" data-filter="all" id="filterAll">All Stores</button>
+          <button class="filter-btn" data-filter="grocery" id="filterGrocery">Grocery</button>
+          <button class="filter-btn" data-filter="kirana" id="filterKirana">Kirana</button>
+          <button class="filter-btn" data-filter="pharmacy" id="filterPharmacy">Pharmacy</button>
+          <button class="filter-btn" data-filter="bakery" id="filterBakery">Bakery</button>
+        </div>
+
+        <div class="stores-grid" id="storesGrid">
+          <div class="store-card" data-reveal data-category="grocery">
+            <div class="store-card-top">
+              <img src="assets/new_store_interior_1774869244376.png" alt="FreshMart Grocery" class="store-cover-img" loading="lazy">
+              <div class="store-tag">Grocery</div>
+              <div class="store-open-badge"><span class="open-dot"></span> Open</div>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-name">FreshMart Grocery</h3>
+              <div class="store-meta">
+                <div class="store-meta-item"><i class="ri-star-fill" style="color:#F59E0B;"></i> <strong>4.8</strong> <span>(312 reviews)</span></div>
+                <div class="store-meta-item"><i class="ri-time-line"></i> <span>25 min</span></div>
+                <div class="store-meta-item"><i class="ri-map-pin-line"></i> <span>1.2 km</span></div>
+              </div>
+              <div class="store-cats">
+                <span>Vegetables</span><span>Fruits</span><span>Dairy</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm store-visit-btn" aria-label="Visit FreshMart Grocery">Visit Store</a>
+            </div>
+          </div>
+
+          <div class="store-card" data-reveal data-reveal-delay="100" data-category="kirana">
+            <div class="store-card-top">
+              <img src="assets/store_view_2_1774868296658.png" alt="Daily Needs Store" class="store-cover-img" loading="lazy">
+              <div class="store-tag">Kirana</div>
+              <div class="store-open-badge"><span class="open-dot"></span> Open</div>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-name">Daily Needs Store</h3>
+              <div class="store-meta">
+                <div class="store-meta-item"><i class="ri-star-fill" style="color:#F59E0B;"></i> <strong>4.6</strong> <span>(198 reviews)</span></div>
+                <div class="store-meta-item"><i class="ri-time-line"></i> <span>18 min</span></div>
+                <div class="store-meta-item"><i class="ri-map-pin-line"></i> <span>0.8 km</span></div>
+              </div>
+              <div class="store-cats">
+                <span>Snacks</span><span>Beverages</span><span>Essentials</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm store-visit-btn" aria-label="Visit Daily Needs Store">Visit Store</a>
+            </div>
+          </div>
+
+          <div class="store-card" data-reveal data-reveal-delay="200" data-category="grocery">
+            <div class="store-card-top">
+              <img src="assets/store_premium_1774868538577.png" alt="City Super Shop" class="store-cover-img" loading="lazy">
+              <div class="store-tag">Supermarket</div>
+              <div class="store-open-badge"><span class="open-dot"></span> Open</div>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-name">City Super Shop</h3>
+              <div class="store-meta">
+                <div class="store-meta-item"><i class="ri-star-fill" style="color:#F59E0B;"></i> <strong>4.7</strong> <span>(425 reviews)</span></div>
+                <div class="store-meta-item"><i class="ri-time-line"></i> <span>30 min</span></div>
+                <div class="store-meta-item"><i class="ri-map-pin-line"></i> <span>2.1 km</span></div>
+              </div>
+              <div class="store-cats">
+                <span>Grocery</span><span>Household</span><span>Snacks</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm store-visit-btn" aria-label="Visit City Super Shop">Visit Store</a>
+            </div>
+          </div>
+
+          <div class="store-card" data-reveal data-reveal-delay="100" data-category="grocery">
+            <div class="store-card-top">
+              <img src="assets/store_view_3_1774868314068.png" alt="Green Basket" class="store-cover-img" loading="lazy">
+              <div class="store-tag">Organic</div>
+              <div class="store-open-badge"><span class="open-dot"></span> Open</div>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-name">Green Basket</h3>
+              <div class="store-meta">
+                <div class="store-meta-item"><i class="ri-star-fill" style="color:#F59E0B;"></i> <strong>4.9</strong> <span>(287 reviews)</span></div>
+                <div class="store-meta-item"><i class="ri-time-line"></i> <span>22 min</span></div>
+                <div class="store-meta-item"><i class="ri-map-pin-line"></i> <span>1.5 km</span></div>
+              </div>
+              <div class="store-cats">
+                <span>Organic</span><span>Fruits</span><span>Dairy</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm store-visit-btn" aria-label="Visit Green Basket">Visit Store</a>
+            </div>
+          </div>
+
+          <div class="store-card" data-reveal data-reveal-delay="200" data-category="kirana">
+            <div class="store-card-top">
+              <img src="assets/store_view_2_1774868296658.png" alt="Family Kirana" class="store-cover-img" loading="lazy">
+              <div class="store-tag">Kirana</div>
+              <div class="store-open-badge"><span class="open-dot"></span> Open</div>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-name">Family Kirana</h3>
+              <div class="store-meta">
+                <div class="store-meta-item"><i class="ri-star-fill" style="color:#F59E0B;"></i> <strong>4.5</strong> <span>(156 reviews)</span></div>
+                <div class="store-meta-item"><i class="ri-time-line"></i> <span>15 min</span></div>
+                <div class="store-meta-item"><i class="ri-map-pin-line"></i> <span>0.5 km</span></div>
+              </div>
+              <div class="store-cats">
+                <span>Essentials</span><span>Spices</span><span>Grains</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm store-visit-btn" aria-label="Visit Family Kirana">Visit Store</a>
+            </div>
+          </div>
+
+          <div class="store-card" data-reveal data-reveal-delay="300" data-category="grocery">
+            <div class="store-card-top">
+              <img src="assets/store_express_1774868518865.png" alt="Quick Essentials" class="store-cover-img" loading="lazy">
+              <div class="store-tag">Express</div>
+              <div class="store-open-badge"><span class="open-dot"></span> Open</div>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-name">Quick Essentials</h3>
+              <div class="store-meta">
+                <div class="store-meta-item"><i class="ri-star-fill" style="color:#F59E0B;"></i> <strong>4.7</strong> <span>(203 reviews)</span></div>
+                <div class="store-meta-item"><i class="ri-time-line"></i> <span>12 min</span></div>
+                <div class="store-meta-item"><i class="ri-map-pin-line"></i> <span>0.3 km</span></div>
+              </div>
+              <div class="store-cats">
+                <span>Quick</span><span>Snacks</span><span>Care</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm store-visit-btn" aria-label="Visit Quick Essentials">Visit Store</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-cta" data-reveal>
+          <a href="#" class="btn btn-outline btn-lg">View All Stores <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== APP SHOWCASE ========== -->
+    <section class="section app-section" id="app" aria-label="Download the App">
+      <div class="container">
+        <div class="app-showcase">
+          <div class="app-text" data-reveal>
+            <div class="section-badge">Mobile Experience</div>
+            <h2 class="section-title" style="text-align:left;">Shop from your <span class="text-gradient">neighborhood stores</span> in just a few taps.</h2>
+            <p class="section-subtitle" style="text-align:left;">The Lokato app puts the power of local commerce right in your pocket. Browse, order, and track — all in one seamless experience.</p>
+            <ul class="app-features-list">
+              <li><i class="ri-checkbox-circle-fill"></i> Easy product browsing & smart search</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Lightning-fast ordering in seconds</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Live order tracking on map</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Support for 500+ local stores</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Exclusive app-only deals & discounts</li>
+            </ul>
+            <div class="app-download-btns">
+              <a href="#" class="download-btn" id="appStoreBtn" aria-label="Download on App Store">
+                <i class="ri-apple-fill"></i>
+                <div>
+                  <span class="download-label">Download on the</span>
+                  <span class="download-store">App Store</span>
+                </div>
+              </a>
+              <a href="#" class="download-btn" id="playStoreBtn" aria-label="Get it on Google Play">
+                <i class="ri-google-play-fill"></i>
+                <div>
+                  <span class="download-label">Get it on</span>
+                  <span class="download-store">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="app-mockup-wrap" data-reveal data-reveal-delay="200">
+            <div class="app-phone-large">
+              <div class="phone-frame-lg">
+                <div class="phone-screen-lg">
+                  <div class="app-ui-lg">
+                    <div class="app-lg-header">
+                      <i class="ri-arrow-left-line"></i>
+                      <span>Order Tracking</span>
+                      <i class="ri-more-2-fill"></i>
+                    </div>
+                    <div class="tracking-map-placeholder">
+                      <div class="map-pin-animated"><i class="ri-map-pin-fill"></i></div>
+                      <div class="map-lines">
+                        <div class="map-line"></div>
+                        <div class="map-line"></div>
+                        <div class="map-line"></div>
+                      </div>
+                      <div class="map-rider"><i class="ri-e-bike-2-fill"></i></div>
+                    </div>
+                    <div class="tracking-info">
+                      <div class="tracking-status">
+                        <div class="status-icon"><i class="ri-timer-fill"></i></div>
+                        <div>
+                          <div class="status-title">On the Way!</div>
+                          <div class="status-sub">Arriving in ~12 minutes</div>
+                        </div>
+                      </div>
+                      <div class="tracking-steps">
+                        <div class="track-step done"><i class="ri-checkbox-circle-fill"></i> Order Placed</div>
+                        <div class="track-step done"><i class="ri-checkbox-circle-fill"></i> Packed</div>
+                        <div class="track-step active"><i class="ri-e-bike-2-fill"></i> On the way</div>
+                        <div class="track-step"><i class="ri-home-4-line"></i> Delivered</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="phone-notch-lg"></div>
+              </div>
+            </div>
+            <div class="app-glow-orb" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section testimonials-section" id="testimonials" aria-label="Customer Testimonials">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-badge">Real Reviews</div>
+          <h2 class="section-title">What Our <span class="text-gradient">Customers Say</span></h2>
+          <p class="section-subtitle">Thousands of happy shoppers trust Lokato every day for their local shopping needs.</p>
+        </div>
+
+        <div class="testimonials-wrapper" data-reveal>
+          <div class="testimonials-track" id="testimonialsTrack">
+
+            <div class="testimonial-card">
+              <div class="tcard-top">
+                <div class="tcard-avatar" style="background: linear-gradient(135deg, #D1FAE5, #6EE7B7);">RS</div>
+                <div class="tcard-info">
+                  <div class="tcard-name">Rahul Sharma</div>
+                  <div class="tcard-role">College Student, Delhi</div>
+                </div>
+                <div class="tcard-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="tcard-text">"Lokato is a lifesaver! I can order from the kirana shop just 500m away. Got my stuff in 15 minutes. The prices are the same as in-store. Absolutely love it!"</p>
+              <div class="tcard-product"><i class="ri-shopping-bag-fill"></i> Ordered: Daily Essentials</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="tcard-top">
+                <div class="tcard-avatar" style="background: linear-gradient(135deg, #DBEAFE, #93C5FD);">PM</div>
+                <div class="tcard-info">
+                  <div class="tcard-name">Priya Mehta</div>
+                  <div class="tcard-role">Working Professional, Bangalore</div>
+                </div>
+                <div class="tcard-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="tcard-text">"As a working mom, I barely have time to step out. Lokato has completely changed how I shop for groceries. Fast, reliable, and the stores are so close!"</p>
+              <div class="tcard-product"><i class="ri-shopping-bag-fill"></i> Ordered: Fresh Vegetables</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="tcard-top">
+                <div class="tcard-avatar" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">AK</div>
+                <div class="tcard-info">
+                  <div class="tcard-name">Amit Kumar</div>
+                  <div class="tcard-role">IT Professional, Mumbai</div>
+                </div>
+                <div class="tcard-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="tcard-text">"The live tracking feature is brilliant. I could see the delivery partner coming in real-time. The app is super smooth and the stores are always stocked."</p>
+              <div class="tcard-product"><i class="ri-shopping-bag-fill"></i> Ordered: Snacks & Beverages</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="tcard-top">
+                <div class="tcard-avatar" style="background: linear-gradient(135deg, #FCE7F3, #FBCFE8);">SS</div>
+                <div class="tcard-info">
+                  <div class="tcard-name">Sneha Singh</div>
+                  <div class="tcard-role">Homemaker, Pune</div>
+                </div>
+                <div class="tcard-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="tcard-text">"I found a great local grocery store on Lokato that I never knew existed. The prices are fair, delivery is on time, and the products are always fresh!"</p>
+              <div class="tcard-product"><i class="ri-shopping-bag-fill"></i> Ordered: Dairy Products</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="tcard-top">
+                <div class="tcard-avatar" style="background: linear-gradient(135deg, #F3E8FF, #DDD6FE);">VR</div>
+                <div class="tcard-info">
+                  <div class="tcard-name">Vikram Rao</div>
+                  <div class="tcard-role">Business Owner, Hyderabad</div>
+                </div>
+                <div class="tcard-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="tcard-text">"Lokato has helped my small grocery shop reach 10x more customers. The partner dashboard is easy to use and orders started flowing in from day one!"</p>
+              <div class="tcard-product"><i class="ri-store-fill"></i> Store Partner</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="tcard-top">
+                <div class="tcard-avatar" style="background: linear-gradient(135deg, #ECFDF5, #A7F3D0);">NJ</div>
+                <div class="tcard-info">
+                  <div class="tcard-name">Nisha Joshi</div>
+                  <div class="tcard-role">Student, Jaipur</div>
+                </div>
+                <div class="tcard-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="tcard-text">"I was skeptical at first but Lokato delivered in under 20 minutes. The UI is so clean and easy. I love how I can see what's available in real-time!"</p>
+              <div class="tcard-product"><i class="ri-shopping-bag-fill"></i> Ordered: Personal Care</div>
+            </div>
+
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="slider-controls" aria-label="Testimonial slider controls">
+            <button class="slider-btn" id="prevBtn" aria-label="Previous testimonial"><i class="ri-arrow-left-s-line"></i></button>
+            <div class="slider-dots" id="sliderDots" aria-label="Slide indicators"></div>
+            <button class="slider-btn" id="nextBtn" aria-label="Next testimonial"><i class="ri-arrow-right-s-line"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PARTNER / STORE OWNER CTA ========== -->
+    <section class="section partner-section" id="partner" aria-label="Partner with Lokato">
+      <div class="container">
+        <div class="partner-card" data-reveal>
+          <div class="partner-bg-shapes" aria-hidden="true">
+            <div class="p-shape p-shape-1"></div>
+            <div class="p-shape p-shape-2"></div>
+          </div>
+          <div class="partner-content">
+            <div class="partner-text">
+              <div class="section-badge" style="background:rgba(255,255,255,0.15); color:#fff;">For Store Owners</div>
+              <h2 class="partner-heading">Own a Store? <br/><span>Grow Your Business with Lokato.</span></h2>
+              <p class="partner-subtext">Join thousands of local shop owners already using Lokato to reach more customers, increase sales, and manage orders digitally — all from one simple dashboard.</p>
+              <div class="partner-benefits">
+                <div class="partner-benefit"><i class="ri-group-fill"></i> Reach thousands of new customers</div>
+                <div class="partner-benefit"><i class="ri-line-chart-fill"></i> Boost sales by up to 3x</div>
+                <div class="partner-benefit"><i class="ri-dashboard-3-fill"></i> Easy order management dashboard</div>
+                <div class="partner-benefit"><i class="ri-smartphone-fill"></i> Go digital with zero tech knowledge</div>
+              </div>
+              <a href="#contact" class="btn btn-white btn-lg" id="partnerCta">
+                <i class="ri-handshake-fill"></i> Partner With Us
+              </a>
+            </div>
+            <div class="partner-stats-block" data-reveal data-reveal-delay="200">
+              <div class="pstat"><div class="pstat-num">500+</div><div class="pstat-label">Partner Stores</div></div>
+              <div class="pstat"><div class="pstat-num">3x</div><div class="pstat-label">Revenue Growth</div></div>
+              <div class="pstat"><div class="pstat-num">Free</div><div class="pstat-label">Onboarding</div></div>
+              <div class="pstat"><div class="pstat-num">24/7</div><div class="pstat-label">Partner Support</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="section faq-section" id="faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-badge">Got Questions?</div>
+          <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
+          <p class="section-subtitle">Everything you need to know about Lokato and how it works.</p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item" data-reveal>
+            <button class="faq-question" aria-expanded="false" id="faq1" aria-controls="faq1-answer">
+              <span>How does Lokato work?</span>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1">
+              <p>Lokato is a hyperlocal commerce platform. You enter your location, and we show you all verified local stores near you. You can browse their products, add items to your cart, and place an order — which gets delivered from the store directly to your home, fast.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-reveal-delay="50">
+            <button class="faq-question" aria-expanded="false" id="faq2" aria-controls="faq2-answer">
+              <span>Can I order from stores near my home?</span>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2">
+              <p>Absolutely! That's exactly what Lokato is built for. Our platform uses your location to show you the nearest available stores. In most areas, you'll find stores within just 0.5 to 2 km of your home, ensuring fast and reliable delivery.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-reveal-delay="100">
+            <button class="faq-question" aria-expanded="false" id="faq3" aria-controls="faq3-answer">
+              <span>How fast is the delivery?</span>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3">
+              <p>Because your products come from a store that's right in your neighborhood, delivery is blazing fast — typically within 15 to 30 minutes for most locations. We even offer live tracking so you can watch your delivery come to you in real-time.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-reveal-delay="150">
+            <button class="faq-question" aria-expanded="false" id="faq4" aria-controls="faq4-answer">
+              <span>Can local shop owners join Lokato?</span>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4">
+              <p>Yes! We actively welcome local shop owners. Registering your store on Lokato is completely free. Once approved, your store will be visible to thousands of nearby shoppers. We provide a simple dashboard to manage your products, inventory, and orders.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-reveal-delay="200">
+            <button class="faq-question" aria-expanded="false" id="faq5" aria-controls="faq5-answer">
+              <span>Is Lokato available on mobile?</span>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5">
+              <p>Yes! Lokato has a native mobile app for both Android (Google Play Store) and iOS (Apple App Store). The app offers a smoother experience with push notifications, live tracking, exclusive deals, and more. You can also use it on any web browser.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-reveal-delay="250">
+            <button class="faq-question" aria-expanded="false" id="faq6" aria-controls="faq6-answer">
+              <span>Are product prices the same as in the store?</span>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6">
+              <p>We ensure prices on Lokato are fair and transparent. Store partners set their own prices, and we work closely with them to ensure pricing remains consistent with in-store rates. A small platform convenience fee may apply to some orders, which is always shown upfront before checkout.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINAL CTA BANNER ========== -->
+    <section class="section cta-banner" id="cta" aria-label="Call to Action">
+      <div class="container">
+        <div class="cta-card" data-reveal>
+          <div class="cta-bg-orbs" aria-hidden="true">
+            <div class="cta-orb cta-orb-1"></div>
+            <div class="cta-orb cta-orb-2"></div>
+          </div>
+          <div class="cta-content">
+            <div class="cta-icon-big" aria-hidden="true">🛒</div>
+            <h2 class="cta-heading">Start Shopping from <span>Nearby Stores Today</span></h2>
+            <p class="cta-subtext">Join 25,000+ happy customers already saving time with fast local delivery. Your neighborhood store is just a tap away.</p>
+            <div class="cta-actions">
+              <a href="#stores" class="btn btn-primary btn-lg" id="ctaExploreBtn">
+                <i class="ri-store-2-line"></i> Explore Stores
+              </a>
+              <a href="#app" class="btn btn-cta-white btn-lg" id="ctaDownloadBtn">
+                <i class="ri-download-line"></i> Download App
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="contact">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-intro" data-reveal>
+          <div>
+            <div class="section-badge footer-badge">Let’s Connect</div>
+            <h2 class="footer-intro-title">Your local commerce partner for shoppers, stores, and fast delivery.</h2>
+            <p class="footer-intro-text">Reach verified nearby stores, discover daily essentials faster, or partner with Lokato to grow your business in your neighborhood.</p>
+          </div>
+          <div class="footer-contact-pills" aria-label="Contact highlights">
+            <a href="mailto:hello@lokato.in" class="footer-contact-pill">
+              <i class="ri-mail-send-line"></i>
+              <span>hello@lokato.in</span>
+            </a>
+            <a href="tel:+919876543210" class="footer-contact-pill">
+              <i class="ri-phone-line"></i>
+              <span>+91 98765 43210</span>
+            </a>
+            <div class="footer-contact-pill">
+              <i class="ri-map-pin-line"></i>
+              <span>Bangalore, India</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-grid">
+          <!-- Brand Column -->
+          <div class="footer-col footer-brand-col">
+            <a href="#home" class="nav-logo footer-logo" aria-label="Lokato">
+              <span class="logo-icon"><i class="ri-map-pin-2-fill"></i></span>
+              <span class="logo-text">Lok<span class="logo-accent">ato</span></span>
+            </a>
+            <p class="footer-brand-desc">Lokato is your hyperlocal shopping platform — connecting you with nearby stores for fast, convenient, and trusted local delivery.</p>
+            <div class="social-links" aria-label="Social Media Links">
+              <a href="#" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+              <a href="#" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
+              <a href="#" class="social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            </div>
+            <div class="footer-contact">
+              <div class="footer-contact-item"><i class="ri-mail-fill"></i> hello@lokato.in</div>
+              <div class="footer-contact-item"><i class="ri-phone-fill"></i> +91 98765 43210</div>
+              <div class="footer-contact-item"><i class="ri-map-pin-fill"></i> Bangalore, India</div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">Quick Links</h4>
+            <ul class="footer-links" role="list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#stores">Nearby Stores</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+
+          <!-- Categories -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">Categories</h4>
+            <ul class="footer-links" role="list">
+              <li><a href="#">Groceries</a></li>
+              <li><a href="#">Fruits & Vegetables</a></li>
+              <li><a href="#">Dairy Products</a></li>
+              <li><a href="#">Snacks</a></li>
+              <li><a href="#">Beverages</a></li>
+              <li><a href="#">Personal Care</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">Stay Updated</h4>
+            <p class="footer-newsletter-text">Subscribe for exclusive deals, new store launches, and hyperlocal offers.</p>
+            <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter Subscription">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email" class="newsletter-input" required aria-label="Email Address" />
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                <i class="ri-send-plane-fill"></i>
+              </button>
+            </form>
+            <div class="footer-app-links">
+              <a href="#" class="footer-app-badge" aria-label="App Store">
+                <i class="ri-apple-fill"></i> App Store
+              </a>
+              <a href="#" class="footer-app-badge" aria-label="Google Play">
+                <i class="ri-google-play-fill"></i> Google Play
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copyright">&copy; 2024 Lokato Technologies Pvt. Ltd. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
