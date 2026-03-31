@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. TOUCH PRESS FEEDBACK
   // ==============================
   const pressableElements = document.querySelectorAll(
-    '.btn, .filter-btn, .download-btn, .slider-btn, .feature-card, .category-card, .store-card, .testimonial-card, .step-card, .float-card, .faq-item, .footer-contact-pill'
+    '.btn, .filter-btn, .download-btn, .slider-btn, .feature-card, .category-card, .store-card, .testimonial-card, .step-card, .faq-item, .footer-contact-pill'
   );
 
   const addPressedState = (event) => {
