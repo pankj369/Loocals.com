@@ -97,9 +97,9 @@
 
           <!-- CTA Buttons -->
           <div class="hero-ctas">
-            <a href="#stores" class="btn btn-primary btn-lg">
+            <button id="exploreStoresBtn" class="btn btn-primary btn-lg">
               <i class="ri-store-2-line"></i> Explore Stores
-            </a>
+            </button>
             <a href="#app" class="btn btn-outline btn-lg">
               <i class="ri-download-line"></i> Download App
             </a>
@@ -626,6 +626,170 @@
         </div>
       </div>
     </section>
+
+  </main>
+  
+  <!-- ========== REGISTRATION MODAL ========== -->
+  <div class="modal-overlay" id="registrationModal" aria-hidden="true">
+    <div class="modal-container" role="dialog" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close Modal">
+        <i class="ri-close-line"></i>
+      </button>
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle" class="modal-title">Register Your <span class="text-gradient">Shop</span></h2>
+          <p class="modal-subtitle">Join Loocals and take your neighborhood store online today.</p>
+        </div>
+
+        <form id="registrationForm" class="registration-form" novalidate>
+          <div class="form-grid">
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <div class="input-wrap">
+                <i class="ri-user-line input-icon"></i>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" required>
+              </div>
+              <span class="error-msg" id="fullNameError"></span>
+            </div>
+
+            <!-- Shop Name -->
+            <div class="form-group">
+              <label for="shopName">Shop Name <span class="required">*</span></label>
+              <div class="input-wrap">
+                <i class="ri-store-line input-icon"></i>
+                <input type="text" id="shopName" name="shopName" placeholder="e.g. Sharma Grocery Store" required>
+              </div>
+              <span class="error-msg" id="shopNameError"></span>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+              <label for="contactNumber">Contact Number <span class="required">*</span></label>
+              <div class="input-wrap">
+                <i class="ri-phone-line input-icon"></i>
+                <input type="tel" id="contactNumber" name="contactNumber" placeholder="10-digit mobile number" required maxlength="10">
+              </div>
+              <span class="error-msg" id="contactNumberError"></span>
+            </div>
+
+            <!-- Email (Optional) -->
+            <div class="form-group">
+              <label for="email">Email Address <span class="optional">(Optional)</span></label>
+              <div class="input-wrap">
+                <i class="ri-mail-line input-icon"></i>
+                <input type="email" id="email" name="email" placeholder="e.g. rahul@example.com">
+              </div>
+              <span class="error-msg" id="emailError"></span>
+            </div>
+
+            <!-- Shop Address -->
+            <div class="form-group full-width">
+              <label for="shopAddress">Shop Address <span class="required">*</span></label>
+              <div class="input-wrap">
+                <i class="ri-map-pin-line input-icon"></i>
+                <textarea id="shopAddress" name="shopAddress" placeholder="Complete shop address with landmark" required rows="3"></textarea>
+              </div>
+              <span class="error-msg" id="shopAddressError"></span>
+            </div>
+
+            <!-- Categories -->
+            <div class="form-group full-width">
+              <label class="label-group">Shop Categories <span class="required">*</span> <small>(Select all that apply)</small></label>
+              <div class="categories-checkbox-grid">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Groceries">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Groceries</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Dairy Items">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Dairy Items</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Beverages">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Beverages</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Daily Essentials">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Daily Essentials</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Vegetables">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Vegetables</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Fruits">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Fruits</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Spices">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Spices</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Grains">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Grains</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Snacks">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Snacks</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="categories" value="Others">
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label">Others</span>
+                </label>
+              </div>
+              <span class="error-msg" id="categoriesError"></span>
+            </div>
+
+            <!-- Shop Image Upload -->
+            <div class="form-group full-width">
+              <label for="shopImage">Upload Shop Image <span class="required">*</span></label>
+              <div class="file-upload-wrap" id="dropZone">
+                <input type="file" id="shopImage" name="shopImage" accept="image/png, image/jpeg" class="file-input">
+                <div class="file-upload-content">
+                  <i class="ri-image-add-line"></i>
+                  <p>Click to upload or drag and drop</p>
+                  <span>JPG, PNG only (Max 5MB)</span>
+                </div>
+                <div id="imagePreview" class="image-preview">
+                  <img src="" alt="Shop Preview">
+                  <button type="button" class="remove-img" id="removeImgBtn"><i class="ri-delete-bin-line"></i></button>
+                </div>
+              </div>
+              <span class="error-msg" id="shopImageError"></span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg full-button" id="submitRegForm">
+              <span>Submit Registration</span>
+              <div class="btn-loader"></div>
+            </button>
+          </div>
+        </form>
+
+        <div id="successState" class="success-state">
+          <div class="success-icon">
+            <i class="ri-checkbox-circle-fill"></i>
+          </div>
+          <h3>Registration Successful!</h3>
+          <p>Thank you for choosing Loocals. Our team will verify your details and contact you soon.</p>
+          <button type="button" class="btn btn-outline" id="closeSuccess">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   </main>
 

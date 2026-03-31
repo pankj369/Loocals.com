@@ -2440,3 +2440,426 @@ select {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==============================
+   REGISTRATION MODAL STYLES
+   ============================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background: var(--white);
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  border-radius: 28px;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: var(--shadow-premium);
+  transform: translateY(30px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-light);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  transform: rotate(90deg);
+}
+
+.modal-content {
+  padding: 3rem 2.5rem;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.modal-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  color: var(--text-gray);
+  font-size: 1.05rem;
+}
+
+/* Form Styles */
+.registration-form {
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--secondary);
+}
+
+.required {
+  color: var(--error);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--text-gray);
+  font-size: 0.85rem;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1.2rem;
+  color: var(--primary);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.input-wrap input,
+.input-wrap textarea {
+  width: 100%;
+  padding: 0.9rem 1rem 0.9rem 3.2rem;
+  border: 2px solid var(--border-light);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  background: var(--white);
+}
+
+.input-wrap textarea {
+  padding-top: 1rem;
+  resize: none;
+}
+
+.input-wrap input:focus,
+.input-wrap textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+  outline: none;
+}
+
+.has-error .input-wrap input,
+.has-error .input-wrap textarea {
+  border-color: var(--error);
+}
+
+.has-error .input-wrap i {
+  color: var(--error);
+}
+
+.has-error label {
+  color: var(--error);
+}
+
+.error-msg {
+  color: var(--error);
+  font-size: 0.82rem;
+  height: 14px;
+  margin-top: 2px;
+}
+
+/* Category Checkboxes */
+.categories-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.8rem;
+  background: var(--bg-light);
+  padding: 1.2rem;
+  border-radius: 16px;
+  border: 1px dashed var(--border-light);
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-item input {
+  display: none;
+}
+
+.checkbox-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.checkbox-item input:checked + .checkbox-box {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox-box::after {
+  content: '\eb7a'; /* remixicon check mark */
+  font-family: 'remixicon';
+  color: var(--white);
+  font-size: 12px;
+  transform: scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.checkbox-item input:checked + .checkbox-box::after {
+  transform: scale(1);
+}
+
+.checkbox-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* File Upload */
+.file-upload-wrap {
+  position: relative;
+  border: 2px dashed var(--border-light);
+  border-radius: 18px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: var(--white);
+}
+
+.file-upload-wrap:hover, .file-upload-wrap.dragover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-content i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.file-upload-content p {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--secondary);
+}
+
+.file-upload-content span {
+  font-size: 0.8rem;
+  color: var(--text-gray);
+}
+
+.image-preview {
+  position: absolute;
+  inset: 10px;
+  background: var(--white);
+  border-radius: 14px;
+  display: none;
+  z-index: 5;
+}
+
+.image-preview.active {
+  display: block;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.remove-img {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--error);
+  color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.form-actions {
+  margin-top: 2.5rem;
+}
+
+.full-button {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Loading State */
+#submitRegForm {
+  position: relative;
+}
+
+#submitRegForm.loading span {
+  opacity: 0;
+}
+
+.btn-loader {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  display: none;
+  animation: spin 0.8s linear infinite;
+}
+
+#submitRegForm.loading .btn-loader {
+  display: block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success State */
+.success-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 0;
+  animation: fadeIn 0.5s ease;
+}
+
+.success-state.active {
+  display: flex;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--success);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 12px 24px rgba(34, 197, 94, 0.4);
+}
+
+.success-state h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--secondary);
+}
+
+.success-state p {
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  
+  .modal-content {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.8rem;
+  }
+  
+  .categories-checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -532,11 +532,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollLeft = foundersGrid.scrollLeft;
         const card = foundersGrid.querySelector('.founder-card');
         if (!card) return;
-        
+
         const cardWidth = card.offsetWidth;
         const gap = parseInt(window.getComputedStyle(foundersGrid).gap) || 24;
         const index = Math.round(scrollLeft / (cardWidth + gap));
-        
+
         fDots.forEach((dot, i) => {
           dot.classList.toggle('active', i === index);
         });
@@ -548,10 +548,10 @@ document.addEventListener('DOMContentLoaded', () => {
       dot.addEventListener('click', () => {
         const card = foundersGrid.querySelector('.founder-card');
         if (!card) return;
-        
+
         const cardWidth = card.offsetWidth;
         const gap = parseInt(window.getComputedStyle(foundersGrid).gap) || 24;
-        
+
         foundersGrid.scrollTo({
           left: i * (cardWidth + gap),
           behavior: 'smooth'
@@ -559,4 +559,253 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+  // ==============================
+  // 14. SHOPKEEPER REGISTRATION FLOW
+  // ==============================
+  const registrationModal = document.getElementById('registrationModal');
+  const exploreStoresBtn = document.getElementById('exploreStoresBtn');
+  const closeModal = document.getElementById('closeModal');
+  const registrationForm = document.getElementById('registrationForm');
+  const successState = document.getElementById('successState');
+  const closeSuccess = document.getElementById('closeSuccess');
+
+  // Modal Utilities
+  const openRegModal = () => {
+    registrationModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    registrationForm.style.display = 'block';
+    successState.classList.remove('active');
+  };
+
+  const closeRegModal = () => {
+    registrationModal.classList.remove('active');
+    document.body.style.overflow = '';
+    // Small delay to reset form after animation
+    setTimeout(() => {
+      registrationForm.reset();
+      document.getElementById('imagePreview').classList.remove('active');
+      clearAllErrors();
+    }, 400);
+  };
+
+  if (exploreStoresBtn) {
+    exploreStoresBtn.addEventListener('click', openRegModal);
+  }
+
+  if (closeModal) {
+    closeModal.addEventListener('click', closeRegModal);
+  }
+
+  if (registrationModal) {
+    registrationModal.addEventListener('click', (e) => {
+      if (e.target === registrationModal) closeRegModal();
+    });
+  }
+
+  if (closeSuccess) {
+    closeSuccess.addEventListener('click', closeRegModal);
+  }
+
+  // Image Preview Logic
+  const shopImageInput = document.getElementById('shopImage');
+  const imagePreview = document.getElementById('imagePreview');
+  const previewImg = imagePreview?.querySelector('img');
+  const removeImgBtn = document.getElementById('removeImgBtn');
+  const dropZone = document.getElementById('dropZone');
+
+  const handleImage = (file) => {
+    if (!file || !file.type.startsWith('image/')) {
+      showError('shopImage', 'Please upload a valid image (JPG/PNG).');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      showError('shopImage', 'File size must be less than 5MB.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (previewImg) previewImg.src = e.target.result;
+      imagePreview.classList.add('active');
+      clearError('shopImage');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  shopImageInput?.addEventListener('change', (e) => {
+    handleImage(e.target.files[0]);
+  });
+
+  removeImgBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (shopImageInput) shopImageInput.value = '';
+    imagePreview.classList.remove('active');
+    if (previewImg) previewImg.src = '';
+  });
+
+  // Validation Utilities
+  const showError = (fieldId, message) => {
+    const errorEl = document.getElementById(`${fieldId}Error`);
+    if (errorEl) errorEl.textContent = message;
+    const input = document.getElementById(fieldId);
+    if (input) input.parentElement.parentElement.classList.add('has-error');
+  };
+
+  const clearError = (fieldId) => {
+    const errorEl = document.getElementById(`${fieldId}Error`);
+    if (errorEl) errorEl.textContent = '';
+    const input = document.getElementById(fieldId);
+    if (input) input.parentElement.parentElement.classList.remove('has-error');
+  };
+
+  const clearAllErrors = () => {
+    ['fullName', 'shopName', 'contactNumber', 'email', 'shopAddress', 'categories', 'shopImage'].forEach(clearError);
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    clearAllErrors();
+
+    const name = document.getElementById('fullName').value.trim();
+    const shop = document.getElementById('shopName').value.trim();
+    const phone = document.getElementById('contactNumber').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('shopAddress').value.trim();
+    const checkboxes = document.querySelectorAll('input[name="categories"]:checked');
+    const image = shopImageInput.files[0];
+
+    // Name Validation (Alphabets only)
+    if (!name) {
+      showError('fullName', 'Full name is required.');
+      isValid = false;
+    } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+      showError('fullName', 'Name can only contain alphabets.');
+      isValid = false;
+    }
+
+    // Shop Name
+    if (!shop) {
+      showError('shopName', 'Shop name is required.');
+      isValid = false;
+    }
+
+    // Phone Validation (10 digits)
+    if (!phone) {
+      showError('contactNumber', 'Contact number is required.');
+      isValid = false;
+    } else if (!/^\d{10}$/.test(phone)) {
+      showError('contactNumber', 'Enter exactly 10 digits.');
+      isValid = false;
+    }
+
+    // Email (Optional but valid)
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('email', 'Enter a valid email address.');
+      isValid = false;
+    }
+
+    // Address
+    if (!address) {
+      showError('shopAddress', 'Shop address is required.');
+      isValid = false;
+    }
+
+    // Categories (At least one)
+    if (checkboxes.length === 0) {
+      showError('categories', 'Select at least one category.');
+      isValid = false;
+    }
+
+    // Image
+    if (!image && !imagePreview.classList.contains('active')) {
+      showError('shopImage', 'Please upload a shop image.');
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
+  // Form Submission Logic
+  registrationForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Clear any previous errors
+    clearAllErrors();
+    
+    if (!validateForm()) {
+        console.warn("Form validation failed. Check required fields.");
+        return;
+    }
+
+    const submitBtn = document.getElementById('submitRegForm');
+    const loadingText = submitBtn.querySelector('span');
+    const originalText = loadingText.textContent;
+
+    // Show loading state
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+    loadingText.textContent = "Submitting...";
+
+    try {
+      const formData = new FormData(registrationForm);
+      const selectedCategories = [...document.querySelectorAll('input[name="categories"]:checked')]
+        .map(cb => cb.value); // Sending as an array as requested
+
+      const shopImageFile = document.getElementById('shopImage').files[0];
+      let base64Image = '';
+
+      // Convert image to base64 if it exists
+      if (shopImageFile) {
+        base64Image = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.readAsDataURL(shopImageFile);
+        });
+      }
+
+      // Prepare data for Google Sheets (Matching exact keys provided by user)
+      const data = {
+        fullName: formData.get('fullName'),
+        shopName: formData.get('shopName'),
+        contactNumber: formData.get('contactNumber'),
+        shopAddress: formData.get('shopAddress'),
+        email: formData.get('email') || 'N/A',
+        categories: selectedCategories,
+        imageUrl: base64Image, // Key matched to 'imageUrl'
+        timestamp: new Date().toLocaleString()
+      };
+
+      console.log("Form submitted. Sending data to Apps Script:", data);
+
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjGIwpr4RGPEEtoA6fYh02ClNxsWCUQUlrzXCAewlTLDiZACLqgDT3L8m0j4-laG4VuQ/exec';
+
+      // Always trigger fetch, no blocking conditions
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Standard for GAS redirect handling
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      console.log("Response received from Google Sheets. Assuming success with no-cors.");
+
+      // Success sequence
+      registrationForm.style.display = 'none';
+      successState.classList.add('active');
+      registrationForm.reset();
+      
+    } catch (err) {
+      console.error('Submission error:', err);
+      alert('There was a problem submitting the form. Our logs show: ' + err.message);
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      loadingText.textContent = originalText;
+    }
+  });
+
 });
+
