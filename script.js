@@ -198,42 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==============================
-  // 5. ANIMATED STATS COUNTER
-  // ==============================
-  const statNumbers = document.querySelectorAll('.stat-number');
-  let statsStarted = false;
-
-  const startStatsCounter = (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !statsStarted) {
-        statsStarted = true;
-
-        statNumbers.forEach(stat => {
-          const target = parseInt(stat.getAttribute('data-count'));
-          const duration = 2000;
-          const step = target / (duration / 16);
-          let current = 0;
-
-          const counter = setInterval(() => {
-            current += step;
-
-            if (current >= target) {
-              stat.textContent = target.toLocaleString();
-              clearInterval(counter);
-            } else {
-              stat.textContent = Math.floor(current).toLocaleString();
-            }
-          }, 16);
-        });
-      }
-    });
-  };
-
-  const statsObserver = new IntersectionObserver(startStatsCounter, { threshold: 0.5 });
-  const statsSection = document.querySelector('.stats-strip');
-  if (statsSection) statsObserver.observe(statsSection);
-
-  // ==============================
   // 6. TESTIMONIAL SLIDER
   // ==============================
   const track = document.getElementById('testimonialsTrack');
