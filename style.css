@@ -59,6 +59,8 @@ LOOCALS - PREMIUM BRAND STYLE SYSTEM
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-offset);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -119,6 +121,7 @@ select {
   padding: var(--section-padding) 0;
   position: relative;
   scroll-margin-top: var(--nav-offset);
+  overflow: hidden;
 }
 
 .footer,
@@ -2424,4 +2427,16 @@ select {
     right: 16px;
     bottom: 16px;
   }
+}
+
+/* Custom Scrollbar Removal (Rendering Artifact Box) */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none !important;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
