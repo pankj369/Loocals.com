@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. TOUCH PRESS FEEDBACK
   // ==============================
   const pressableElements = document.querySelectorAll(
-    '.btn, .filter-btn, .download-btn, .slider-btn, .feature-card, .category-card, .store-card, .testimonial-card, .step-card, .faq-item, .footer-contact-pill'
+    '.btn, .download-btn, .slider-btn, .feature-card, .category-card, .store-card, .testimonial-card, .step-card, .faq-item, .footer-contact-pill'
   );
 
   const addPressedState = (event) => {
@@ -419,38 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.classList.add('active');
         question.setAttribute('aria-expanded', 'true');
       }
-    });
-  });
-
-  // ==============================
-  // 8. STORE FILTERING
-  // ==============================
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const storeCards = document.querySelectorAll('.store-card');
-  const storesGrid = document.getElementById('storesGrid');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
-
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      if (storesGrid) storesGrid.style.opacity = '0';
-
-      setTimeout(() => {
-        storeCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (storesGrid) storesGrid.style.opacity = '1';
-      }, 250);
     });
   });
 
