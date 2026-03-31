@@ -519,4 +519,44 @@ document.addEventListener('DOMContentLoaded', () => {
   syncNavbarMetrics();
   updateActiveSection();
   handleInitialHash();
+
+  // ==============================
+  // 13. FOUNDERS MOBILE SLIDER DOTS SYNC
+  // ==============================
+  const foundersGrid = document.getElementById('foundersGrid');
+  const fDots = document.querySelectorAll('.f-dot');
+
+  if (foundersGrid && fDots.length > 0) {
+    foundersGrid.addEventListener('scroll', () => {
+      if (window.innerWidth <= 768) {
+        const scrollLeft = foundersGrid.scrollLeft;
+        const card = foundersGrid.querySelector('.founder-card');
+        if (!card) return;
+        
+        const cardWidth = card.offsetWidth;
+        const gap = parseInt(window.getComputedStyle(foundersGrid).gap) || 24;
+        const index = Math.round(scrollLeft / (cardWidth + gap));
+        
+        fDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    });
+
+    // Make dots clickable
+    fDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const card = foundersGrid.querySelector('.founder-card');
+        if (!card) return;
+        
+        const cardWidth = card.offsetWidth;
+        const gap = parseInt(window.getComputedStyle(foundersGrid).gap) || 24;
+        
+        foundersGrid.scrollTo({
+          left: i * (cardWidth + gap),
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
 });
