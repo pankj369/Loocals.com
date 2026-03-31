@@ -446,12 +446,11 @@ select {
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 100vh;
-  padding-top: 150px;
-  padding-bottom: 100px;
+  padding-top: calc(var(--nav-height) + 24px);
+  padding-bottom: 60px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background:
     radial-gradient(circle at 15% 20%, rgba(249, 115, 22, 0.14), transparent 20%),
     radial-gradient(circle at 85% 10%, rgba(250, 204, 21, 0.2), transparent 22%),
