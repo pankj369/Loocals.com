@@ -205,9 +205,66 @@ document.addEventListener('DOMContentLoaded', () => {
   const dotsContainer = document.getElementById('sliderDots');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const testimonialsWrapper = document.querySelector('.testimonials-wrapper');
 
   let currentIndex = 0;
   let cardsToShow = 3;
+  let autoplayTimer = null;
+  let touchStartX = 0;
+  let touchDeltaX = 0;
+
+  const getMaxIndex = () => Math.max(Math.ceil(cards.length / cardsToShow) - 1, 0);
+
+  const setActiveSlideMetadata = () => {
+    const start = currentIndex * cardsToShow;
+    const end = start + cardsToShow;
+
+    cards.forEach((card, index) => {
+      const isVisible = index >= start && index < end;
+      card.setAttribute('aria-hidden', String(!isVisible));
+      card.setAttribute('aria-label', `Testimonial ${index + 1} of ${cards.length}`);
+    });
+  };
+
+  const goToSlide = (nextIndex) => {
+    const maxIndex = getMaxIndex();
+    currentIndex = nextIndex < 0 ? maxIndex : nextIndex > maxIndex ? 0 : nextIndex;
+    updateSlider();
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+
+    if (!track || cards.length <= cardsToShow || window.innerWidth < 768) return;
+
+    autoplayTimer = window.setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 5500);
+  };
+
+  const syncTestimonialCardWidths = () => {
+    if (!track || !cards.length || !testimonialsWrapper) return;
+
+    const trackStyles = window.getComputedStyle(track);
+    const wrapperStyles = window.getComputedStyle(testimonialsWrapper);
+    const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0');
+    const paddingLeft = parseFloat(wrapperStyles.paddingLeft || '0');
+    const paddingRight = parseFloat(wrapperStyles.paddingRight || '0');
+    const wrapperInnerWidth = testimonialsWrapper.clientWidth - paddingLeft - paddingRight;
+    const cardWidth = Math.max((wrapperInnerWidth - gap * (cardsToShow - 1)) / cardsToShow, 0);
+
+    cards.forEach(card => {
+      card.style.flexBasis = `${cardWidth}px`;
+      card.style.maxWidth = `${cardWidth}px`;
+    });
+  };
 
   const updateCardsToShow = () => {
     if (!cards.length || !track) return;
@@ -216,11 +273,14 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (window.innerWidth < 1024) cardsToShow = 2;
     else cardsToShow = 3;
 
-    const maxIndex = Math.max(Math.ceil(cards.length / cardsToShow) - 1, 0);
+    syncTestimonialCardWidths();
+
+    const maxIndex = getMaxIndex();
     currentIndex = Math.min(currentIndex, maxIndex);
 
     createDots();
     updateSlider();
+    startAutoplay();
   };
 
   const createDots = () => {
@@ -230,13 +290,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const dotCount = Math.ceil(cards.length / cardsToShow);
 
     for (let i = 0; i < dotCount; i++) {
-      const dot = document.createElement('div');
+      const dot = document.createElement('button');
+      dot.type = 'button';
       dot.classList.add('dot');
       if (i === currentIndex) dot.classList.add('active');
+      dot.setAttribute('aria-label', `Go to testimonial page ${i + 1}`);
+      dot.setAttribute('aria-pressed', String(i === currentIndex));
 
       dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateSlider();
+        goToSlide(i);
+        startAutoplay();
       });
 
       dotsContainer.appendChild(dot);
@@ -246,7 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateSlider = () => {
     if (!track || !cards.length) return;
 
-    const gap = 32; // 2rem
+    syncTestimonialCardWidths();
+
+    const gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || '0');
     const cardWidth = cards[0].offsetWidth;
     const move = currentIndex * (cardWidth + gap) * cardsToShow;
 
@@ -255,24 +320,84 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = document.querySelectorAll('.dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
+      dot.setAttribute('aria-pressed', String(index === currentIndex));
     });
+
+    setActiveSlideMetadata();
   };
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      const maxIndex = Math.ceil(cards.length / cardsToShow) - 1;
-      currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
-      updateSlider();
+      goToSlide(currentIndex + 1);
+      startAutoplay();
     });
   }
 
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      const maxIndex = Math.ceil(cards.length / cardsToShow) - 1;
-      currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
-      updateSlider();
+      goToSlide(currentIndex - 1);
+      startAutoplay();
     });
   }
+
+  if (testimonialsWrapper) {
+    testimonialsWrapper.addEventListener('mouseenter', () => {
+      testimonialsWrapper.classList.add('is-paused');
+      stopAutoplay();
+    });
+
+    testimonialsWrapper.addEventListener('mouseleave', () => {
+      testimonialsWrapper.classList.remove('is-paused');
+      startAutoplay();
+    });
+
+    testimonialsWrapper.addEventListener('focusin', () => {
+      testimonialsWrapper.classList.add('is-paused');
+      stopAutoplay();
+    });
+
+    testimonialsWrapper.addEventListener('focusout', () => {
+      testimonialsWrapper.classList.remove('is-paused');
+      startAutoplay();
+    });
+
+    testimonialsWrapper.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToSlide(currentIndex + 1);
+        startAutoplay();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToSlide(currentIndex - 1);
+        startAutoplay();
+      }
+    });
+
+    testimonialsWrapper.addEventListener('touchstart', (event) => {
+      touchStartX = event.changedTouches[0]?.clientX || 0;
+      touchDeltaX = 0;
+      stopAutoplay();
+    }, { passive: true });
+
+    testimonialsWrapper.addEventListener('touchmove', (event) => {
+      touchDeltaX = (event.changedTouches[0]?.clientX || 0) - touchStartX;
+    }, { passive: true });
+
+    testimonialsWrapper.addEventListener('touchend', () => {
+      if (Math.abs(touchDeltaX) > 40) {
+        goToSlide(touchDeltaX < 0 ? currentIndex + 1 : currentIndex - 1);
+      }
+
+      startAutoplay();
+    }, { passive: true });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
 
   window.addEventListener('resize', updateCardsToShow);
   updateCardsToShow();

@@ -1010,30 +1010,39 @@ select {
   margin-bottom: 1rem;
 }
 
-.step-arrow {
-  position: absolute;
-  top: 50%;
-  right: -0.75rem;
-  transform: translateY(-50%);
-  color: var(--primary);
-  font-size: 1.5rem;
-}
-
 /* Features Block */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+  max-width: 1220px;
+  margin: 0 auto;
 }
 
 .feature-card {
+  position: relative;
   background: var(--white);
   border-radius: 26px;
   border: 1px solid var(--border-light);
   transition: all var(--transition-base);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 112px;
+  padding: 0.8rem 0.95rem;
+  box-shadow: 0 18px 30px -24px rgba(15, 23, 42, 0.18);
+  isolation: isolate;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 247, 237, 0.7));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
 }
 
 .feature-card:hover {
@@ -1041,10 +1050,19 @@ select {
   transform: translateY(-8px);
 }
 
+.feature-card:hover::before {
+  opacity: 1;
+}
+
 .feature-img-cover {
-  width: 100%;
-  height: 240px;
+  width: 84px;
+  min-width: 84px;
+  height: 84px;
   overflow: hidden;
+  margin: 0;
+  border-radius: 18px;
+  box-shadow: 0 18px 24px -20px rgba(249, 115, 22, 0.42);
+  flex-shrink: 0;
 }
 
 .feature-img-cover img {
@@ -1059,19 +1077,25 @@ select {
 }
 
 .feature-card-content {
-  padding: 2rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
+  min-width: 0;
 }
 
 .feature-title {
-  font-size: 1.35rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  line-height: 1.22;
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
 }
 
 .feature-desc {
   font-size: 1rem;
+  line-height: 1.72;
+  overflow-wrap: anywhere;
 }
 
 /* Category Grid */
@@ -1525,6 +1549,10 @@ select {
   position: relative;
   max-width: 1100px;
   margin: 0 auto;
+  overflow: hidden;
+  padding: 0 0.35rem 0.35rem;
+  border-radius: 32px;
+  outline: none;
 }
 
 .testimonials-track {
@@ -1532,10 +1560,12 @@ select {
   align-items: stretch;
   gap: 2rem;
   transition: transform var(--transition-slow);
+  will-change: transform;
 }
 
 .testimonial-card {
-  min-width: calc((100% - 4rem) / 3);
+  flex: 0 0 calc((100% - 4rem) / 3);
+  min-width: 0;
   background: var(--white);
   padding: 2.5rem;
   border-radius: 28px;
@@ -1545,6 +1575,16 @@ select {
   flex-shrink: 0;
   min-height: 100%;
   border: 1px solid rgba(249, 115, 22, 0.08);
+  overflow: hidden;
+  user-select: none;
+}
+
+.testimonials-wrapper:focus-visible {
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.22);
+}
+
+.testimonials-wrapper.is-paused .testimonials-track {
+  transition-duration: 0.2s;
 }
 
 .feature-card,
@@ -1642,15 +1682,22 @@ select {
 }
 
 .tcard-text {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   font-size: 1rem;
   margin-bottom: 1.5rem;
   font-style: italic;
   line-height: 1.8;
   overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
   flex-grow: 1;
 }
 
 .tcard-product {
+  width: 100%;
+  max-width: 100%;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary);
@@ -1682,6 +1729,11 @@ select {
   transition: var(--transition-base);
 }
 
+.slider-btn:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.25);
+  outline-offset: 3px;
+}
+
 .slider-btn:hover {
   background: var(--accent);
   color: var(--text-dark);
@@ -1699,12 +1751,24 @@ select {
   background: var(--border-light);
   border-radius: 50%;
   cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: width var(--transition-base), background var(--transition-base), transform var(--transition-base);
 }
 
 .dot.active {
   width: 25px;
   border-radius: 10px;
   background: var(--primary);
+}
+
+.dot:hover {
+  transform: scale(1.05);
+}
+
+.dot:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.22);
+  outline-offset: 3px;
 }
 
 /* Partner Section */
@@ -2185,12 +2249,19 @@ select {
   }
 
   .testimonial-card {
-    min-width: calc((100% - 2rem) / 2);
+    flex-basis: calc((100% - 2rem) / 2);
     padding: 2rem;
   }
 
+  .feature-card {
+    grid-template-columns: 132px minmax(0, 1fr);
+    min-height: 166px;
+  }
+
   .feature-img-cover {
-    height: 220px;
+    margin: 0.75rem;
+    width: auto;
+    min-width: 0;
   }
 
   .cat-img-wrap {
@@ -2313,9 +2384,79 @@ select {
     justify-self: center;
   }
 
-  .step-arrow,
   .scroll-indicator {
     display: none;
+  }
+
+  .categories-grid {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0 0.2rem 0.45rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .categories-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-card {
+    flex: 0 0 min(42vw, 180px);
+    padding: 1.2rem 1rem 1.05rem;
+    scroll-snap-align: start;
+  }
+
+  .cat-img-wrap {
+    width: 82px;
+    height: 82px;
+    margin-bottom: 0.95rem;
+    border-radius: 22px;
+  }
+
+  .cat-name {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cat-count {
+    font-size: 0.84rem;
+  }
+
+  .steps-grid {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0 0.2rem 0.45rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-card {
+    flex: 0 0 min(72vw, 280px);
+    padding: 1rem 1rem 1.35rem;
+    min-height: auto;
+    scroll-snap-align: start;
+  }
+
+  .step-media {
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+
+  .step-title {
+    font-size: 1.08rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .step-desc {
+    font-size: 0.93rem;
   }
 
   .partner-card {
@@ -2369,13 +2510,38 @@ select {
     justify-content: center;
   }
 
-  .feature-img-cover {
-    height: 230px;
+  .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.95rem;
   }
 
-  .cat-img-wrap {
-    width: 110px;
-    height: 110px;
+  .feature-card {
+    min-height: 104px;
+    border-radius: 24px;
+    gap: 0.8rem;
+    padding: 0.72rem 0.82rem;
+  }
+
+  .feature-img-cover {
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+    margin: 0;
+    border-radius: 16px;
+  }
+
+  .feature-card-content {
+    padding: 0;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .feature-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .store-card-top {
@@ -2421,18 +2587,26 @@ select {
     gap: 1rem;
   }
 
+  .testimonials-track {
+    gap: 1rem;
+  }
+
   .testimonial-card {
-    min-width: 100%;
+    flex-basis: 100%;
     padding: 1.75rem;
   }
 
   .tcard-top {
     gap: 0.9rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .tcard-rating {
+    margin-left: 0;
   }
 
   .steps-grid,
-  .features-grid,
-  .categories-grid,
   .stores-grid {
     grid-template-columns: 1fr;
   }
@@ -2517,7 +2691,6 @@ select {
   }
 
   .step-card,
-  .feature-card-content,
   .category-card,
   .store-card-body,
   .testimonial-card,
@@ -2535,26 +2708,91 @@ select {
   }
 
   .step-media {
-    height: 180px;
+    height: 132px;
+  }
+
+  .feature-card {
+    min-height: 96px;
+    border-radius: 22px;
+    gap: 0.7rem;
+    padding: 0.65rem 0.72rem;
   }
 
   .feature-img-cover {
-    height: 210px;
+    width: 62px;
+    min-width: 62px;
+    height: 62px;
+    margin: 0;
+    border-radius: 14px;
   }
 
-  .cat-img-wrap {
-    width: 96px;
-    height: 96px;
-    border-radius: 24px;
+  .feature-card-content {
+    padding: 0;
+  }
+
+  .feature-title {
+    font-size: 0.95rem;
+    line-height: 1.18;
+    margin-bottom: 0;
+  }
+
+  .feature-desc {
+    font-size: 0.9rem;
+    line-height: 1.52;
   }
 
   .category-card {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    flex-basis: min(46vw, 168px);
+    padding-top: 1rem;
+    padding-bottom: 0.95rem;
+  }
+
+  .cat-img-wrap {
+    width: 74px;
+    height: 74px;
+    border-radius: 20px;
+  }
+
+  .cat-name {
+    font-size: 0.96rem;
+  }
+
+  .cat-count {
+    font-size: 0.8rem;
   }
 
   .store-card-top {
     height: 220px;
+  }
+
+  .step-card {
+    flex-basis: min(78vw, 250px);
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+  }
+
+  .step-title {
+    font-size: 1rem;
+  }
+
+  .step-desc {
+    font-size: 0.9rem;
+  }
+
+  .testimonial-card {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .tcard-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .tcard-product {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    flex-wrap: wrap;
   }
 
   .phone-frame-lg {
