@@ -523,8 +523,7 @@ select {
 
 .hero-content,
 .hero-visual,
-.footer-col,
-.app-showcase > * {
+.footer-col {
   min-width: 0;
 }
 
@@ -690,8 +689,7 @@ select {
 .categories-section::before,
 .stores-section::before,
 .testimonials-section::before,
-.faq-section::before,
-.app-section::before {
+.faq-section::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1020,17 +1018,6 @@ select {
   margin-top: 4rem;
 }
 
-
-.app-glow-orb {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
 
 /* Testimonials */
 .testimonials-section {
@@ -1562,15 +1549,8 @@ select {
     font-size: 3rem;
   }
 
-  .hero-container,
-  .app-showcase {
+  .hero-container {
     gap: 2.5rem;
-  }
-
-  .phone-frame-lg {
-    width: min(340px, 100%);
-    height: auto;
-    aspect-ratio: 320 / 650;
   }
 
   .testimonial-card {
@@ -1794,13 +1774,31 @@ select {
   }
 
   .steps-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0.95rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  .steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .steps-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .step-card {
+    flex: 0 0 min(320px, 92%);
+    min-width: 280px;
+    scroll-snap-align: start;
     display: grid;
     grid-template-columns: 72px 1fr;
     grid-template-rows: auto auto;
@@ -2230,21 +2228,8 @@ select {
     flex-wrap: wrap;
   }
 
-  .phone-frame-lg {
-    width: min(300px, 88vw);
-  }
-
-  .app-glow-orb {
-    width: min(320px, 88vw);
-    height: min(320px, 88vw);
-  }
-
   .tracking-status {
     align-items: flex-start;
-  }
-
-  .download-btn {
-    width: 100%;
   }
 
   .back-to-top {
