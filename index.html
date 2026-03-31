@@ -37,9 +37,9 @@
         <li><a href="#features" class="nav-link">Why Choose Loocals</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="#app" class="btn btn-primary btn-sm" id="navCta">
+        <button class="btn btn-primary btn-sm" id="navCta">
           <i class="ri-smartphone-line"></i> Download App
-        </a>
+        </button>
         <button class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -54,7 +54,7 @@
     <li><a href="#stores" class="mobile-link">Nearby Stores</a></li>
     <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
     <li><a href="#features" class="mobile-link">Why Choose Loocals</a></li>
-    <li><a href="#app" class="btn btn-primary" style="text-align:center; display:block; margin-top:0.5rem;">Download App</a></li>
+    <li><button id="mobileAppCta" class="btn btn-primary" style="text-align:center; display:block; margin-top:0.5rem; width:100%;">Download App</button></li>
   </ul>
 </div>
   </nav>
@@ -100,9 +100,9 @@
             <button id="exploreStoresBtn" class="btn btn-primary btn-lg">
               <i class="ri-store-2-line"></i> Explore Stores
             </button>
-            <a href="#app" class="btn btn-outline btn-lg">
+            <button id="heroDownloadBtn" class="btn btn-outline btn-lg">
               <i class="ri-download-line"></i> Download App
-            </a>
+            </button>
           </div>
 
           <!-- Trust badges -->
@@ -787,6 +787,54 @@
           <p>Thank you for choosing Loocals. Our team will verify your details and contact you soon.</p>
           <button type="button" class="btn btn-outline" id="closeSuccess">Close</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== APP COMING SOON MODAL ========== -->
+  <div class="modal-overlay" id="appComingSoonModal" aria-hidden="true">
+    <div class="modal-container modal-sm" role="dialog" aria-labelledby="appModalTitle">
+      <button class="modal-close" id="closeAppModal" aria-label="Close Coming Soon Modal">
+        <i class="ri-close-line"></i>
+      </button>
+      
+      <div class="modal-content coming-soon-content">
+        <div class="app-icon-wrap">
+          <div class="app-logo-bg">
+            <i class="ri-shopping-cart-2-line"></i>
+          </div>
+          <div class="glow"></div>
+        </div>
+
+        <h2 id="appModalTitle" class="modal-title">Loocals App is <span class="text-gradient">Coming Soon 🚀</span></h2>
+        
+        <p class="modal-subtitle">
+          We’re building something exciting for your neighborhood shopping experience. 
+          Our app will be available soon on Android and iOS.
+        </p>
+
+        <div class="app-buttons-disabled">
+          <div class="app-btn-mock">
+            <i class="ri-google-play-fill"></i>
+            <div class="app-btn-text">
+              <small>Coming Soon on</small>
+              <span>Google Play</span>
+            </div>
+          </div>
+          <div class="app-btn-mock">
+            <i class="ri-apple-fill"></i>
+            <div class="app-btn-text">
+              <small>Available shortly on</small>
+              <span>App Store</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notify-wrap">
+          <p class="notify-text">Stay tuned — we’ll be launching shortly.</p>
+        </div>
+
+        <button type="button" class="btn btn-primary full-button" id="closeAppModalBtn">Got it, thanks!</button>
       </div>
     </div>
   </div>

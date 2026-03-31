@@ -807,5 +807,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ==============================
+  // 15. APP COMING SOON MODAL
+  // ==============================
+  const appComingSoonModal = document.getElementById('appComingSoonModal');
+  const appDownloadTriggers = [
+    document.getElementById('heroDownloadBtn'),
+    document.getElementById('navCta'),
+    document.getElementById('mobileAppCta')
+  ];
+  const closeAppModal = document.getElementById('closeAppModal');
+  const closeAppModalBtn = document.getElementById('closeAppModalBtn');
+
+  if (appComingSoonModal) {
+    const openAppModal = (e) => {
+      e.preventDefault();
+      appComingSoonModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Close mobile menu if open
+      if (document.getElementById('mobileMenu')) {
+        document.getElementById('mobileMenu').classList.remove('active');
+        document.getElementById('hamburger').classList.remove('active');
+      }
+    };
+
+    appDownloadTriggers.forEach(btn => {
+      if (btn) btn.addEventListener('click', openAppModal);
+    });
+
+    const closeAppModalFunc = () => {
+      appComingSoonModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    [closeAppModal, closeAppModalBtn].forEach(btn => {
+      if (btn) btn.addEventListener('click', closeAppModalFunc);
+    });
+
+    appComingSoonModal.addEventListener('click', (e) => {
+      if (e.target === appComingSoonModal) closeAppModalFunc();
+    });
+  }
+
 });
 
